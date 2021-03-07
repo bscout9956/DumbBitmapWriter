@@ -1,4 +1,4 @@
-# Bitmap Creator (out of bytes)
+# Bitmap Creator (out of bytes) - MAIN FILE
 import os
 import re
 import PixelProcess
@@ -9,11 +9,10 @@ import ImageExtract
 img_dimensions = ImageExtract.ImageExtract()
 
 # Image Parameters
-img_width_int = img_dimensions[0]
-img_height_int = img_dimensions[1]
-plane_count_int = 1
+img_width_int, img_height_int = (img_dimensions[0], img_dimensions[1]) # Tuple unpacking is fun
+plane_count_int = 1 # Airbus?
 bpp_int = 24
-bytespp = int(bpp_int / 8)
+bytespp = bpp_int // 8
 image_size_int = img_width_int * img_height_int * bytespp
 image_dimensions = img_width_int * img_height_int
 
@@ -95,13 +94,13 @@ bitmap_file_header = [bmp_signature, file_size, reserve1, reserve2, file_offset]
 # Write all the header information
 
 with open("result.bmp", "wb") as bitmap_file:
-    for x in range(0, len(bitmap_file_header)):
-        bitmap_file.write(bitmap_file_header[x])
-    for x in range(0, len(dib_header)):
-        bitmap_file.write(dib_header[x])
+    for header_element in bitmap_file_header:
+        bitmap_file.write(header_element)
+    for header_element in dib_header:
+        bitmap_file.write(header_element)
     # Write the PixelArray
-    for x in range(0, len(pixels)):
-        bitmap_file.write(pixels[x])
+    for px in pixels:
+        bitmap_file.write(px)
 
 #os.remove("pixels.csv")
 

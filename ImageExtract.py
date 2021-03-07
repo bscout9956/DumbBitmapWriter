@@ -11,11 +11,11 @@ def ImageExtract():
     pixels = img.load()
     print(img.size)
 
-    pixels_list = []
-    separated_rgb = []
+    pixels_list = list()
+    separated_rgb = list()
 
     for y in range(0, img.size[1]):
-        for x in range(0, img.size[0]):
+        for x in range(0, img.size[0]): # Bad performance maybe?
             tmp = list(pixels[x, y])
             separated_rgb = [tmp[2], ";", tmp[1], ";", tmp[0], ";"]
             pixels_list += separated_rgb
