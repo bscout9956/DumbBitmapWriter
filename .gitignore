@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+abigail.jpg
+
+pixels.csv
+
+result.bmp
