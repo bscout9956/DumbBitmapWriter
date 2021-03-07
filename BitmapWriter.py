@@ -69,7 +69,7 @@ BMP Signature +
 4 bytes for the file_size value in the header
 """
 
-bfh_size = 2 + 2 + 2 + 4 + 4
+bfh_size = 14 # 2 + 2 + 2 + 4 + 4
 
 # ----------------------------------
 
@@ -93,14 +93,11 @@ bitmap_file_header = [bmp_signature, file_size, reserve1, reserve2, file_offset]
 
 # Write all the header information
 
-with open("result.bmp", "wb") as bitmap_file:
-    for header_element in bitmap_file_header:
-        bitmap_file.write(header_element)
-    for header_element in dib_header:
-        bitmap_file.write(header_element)
+with open("result.bmp", "wb") as bitmap_file:    
+    [bitmap_file.write(header_element) for header_element in bitmap_file_header]
+    [bitmap_file.write(header_element) for header_element in dib_header]
     # Write the PixelArray
-    for px in pixels:
-        bitmap_file.write(px)
+    [bitmap_file.write(px) for px in pixels]
 
 #os.remove("pixels.csv")
 

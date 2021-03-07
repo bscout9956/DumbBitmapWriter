@@ -21,8 +21,14 @@ def ImageExtract():
             pixels_list += separated_rgb
         pixels_list.append("\n")
 
+
+    """
     for x in range(0, len(pixels_list)):
         pixels_list[x] = str(pixels_list[x])
+    """
+
+    # List comprehension magic, avoid the above
+    pixels_list = [str(pixel) for pixel in pixels_list]
 
     print("Saving to file...")
 
