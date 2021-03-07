@@ -9,7 +9,7 @@ def ImageExtract():
         print("It was not possible to read/find the file, please try again.")
 
     pixels = img.load()
-    print(img.size)
+    print(img.size, img.mode)
 
     pixels_list = list()
     separated_rgb = list()

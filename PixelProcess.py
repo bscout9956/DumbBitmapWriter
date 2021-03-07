@@ -25,6 +25,6 @@ def processFile(reverse):
 
     #print(len(listy))
     if reverse == True:
-        listy.reverse() # You may want to reverse the list for some reason?
+        listy.reverse() # You need to reverse the list
 
     return listy
